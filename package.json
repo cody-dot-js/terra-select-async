@@ -1,0 +1,64 @@
+{
+  "name": "terra-select-async",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tt-serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-cprice/terra-select-async.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dev-cprice/terra-select-async/issues"
+  },
+  "homepage": "https://github.com/dev-cprice/terra-select-async#readme",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "lodash.uniqueid": "^4.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-intl": "^2.9.0",
+    "react-lifecycles-compat": "^3.0.4",
+    "terra-form-field": "^3.14.0",
+    "terra-hookshot": "^5.11.0",
+    "terra-mixins": "^1.31.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.4",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-react": "^7.0.0",
+    "browserslist-config-terra": "^1.2.0",
+    "core-js": "^3.1.4",
+    "eslint": "^6.0.1",
+    "eslint-config-terra": "^2.5.0",
+    "raf": "^3.4.1",
+    "stylelint-config-terra": "^3.1.0",
+    "terra-aggregate-translations": "^1.1.0",
+    "terra-dev-site": "^5.0.0",
+    "terra-disclosure-manager": "^4.15.0",
+    "terra-doc-template": "^2.12.0",
+    "terra-toolkit": "^5.2.0",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "browserslist": [
+    "extends browserslist-config-terra"
+  ],
+  "eslintConfig": {
+    "extends": "terra"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-terra"
+  }
+}
