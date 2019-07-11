@@ -140,6 +140,7 @@ class Select extends React.Component {
     this.state = {
       tags: [],
       value: Util.defaultValue(props),
+      selectedCache: {},
     };
 
     this.display = this.display.bind(this);
@@ -152,14 +153,15 @@ class Select extends React.Component {
    * Returns the appropriate variant display
    */
   display() {
+    const { selectedCache } = this.state;
     const selectValue = Util.value(this.props, this.state);
 
     switch (this.props.variant) {
       case Variants.TAG:
       case Variants.MULTIPLE:
-        return selectValue.map(tag => (
-          <Tag value={tag} key={tag} onDeselect={this.handleDeselect}>
-            {Util.valueDisplay(this.props, tag)}
+        return selectValue.map(value => (
+          <Tag key={value} value={value} onDeselect={this.handleDeselect}>
+            {selectedCache[value]}
           </Tag>
         ));
       default:
@@ -191,6 +193,8 @@ class Select extends React.Component {
     if (this.props.onDeselect) {
       this.props.onDeselect(value);
     }
+
+    this.setState(({ selectedCache }) => ({ selectedCache: { ...selectedCache, [value]: undefined } }));
   }
 
   /**
@@ -209,6 +213,8 @@ class Select extends React.Component {
     if (this.props.onSelect) {
       this.props.onSelect(value, option);
     }
+
+    this.setState(({ selectedCache }) => ({ selectedCache: { ...selectedCache, [value]: option.props.display } }));
   }
 
   render() {

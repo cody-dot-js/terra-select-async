@@ -11,6 +11,8 @@ import SelectSrc from '!raw-loader!../../../../src/Select';
 // Example Files
 import DefaultExample from '../example/Default';
 import DefaultExampleSrc from '!raw-loader!../../../../src/terra-dev-site/doc/example/Default';
+import MultipleExample from '../example/Multiple';
+import MultipleExampleSrc from '!raw-loader!../../../../src/terra-dev-site/doc/example/Multiple';
 /* eslint-enable import/no-webpack-loader-syntax, import/first, import/extensions, import/no-unresolved, import/no-duplicates */
 
 const Index = () => (
@@ -33,6 +35,11 @@ const Index = () => (
       description: 'A default variant allows selecting a single option.',
       example: <DefaultExample />,
       source: DefaultExampleSrc,
+    }, {
+      title: 'Multiple',
+      description: 'A multiple variant allows searching and selecting multiple options.',
+      example: <MultipleExample />,
+      source: MultipleExampleSrc,
     }]}
   />
 );

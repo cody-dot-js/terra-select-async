@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { polyfill } from 'react-lifecycles-compat';
 import { injectIntl, intlShape } from 'react-intl';
-import KeyCode from 'keycode-js';
 import Variants from './_constants';
 import AddOption from './_AddOption';
 import ClearOption from './_ClearOption';
@@ -350,7 +349,7 @@ class Menu extends React.Component {
    * @param {event} event - The key down event.
    */
   handleKeyDown(event) {
-    const { keyCode } = event;
+    const { key, keyCode } = event;
     const { active, children } = this.state;
     const {
       intl,
@@ -363,17 +362,17 @@ class Menu extends React.Component {
     const selectedTxt = intl.formatMessage({ id: 'Terra.form.select.selected' });
     const unselectedTxt = intl.formatMessage({ id: 'Terra.form.select.unselected' });
 
-    if (keyCode === KeyCode.KEY_UP) {
+    if (key === 'ArrowUp') {
       this.clearScrollTimeout();
       this.scrollTimeout = setTimeout(this.clearScrollTimeout, 500);
       this.setState({ active: Util.findPrevious(children, active) });
       this.updateCurrentActiveScreenReader();
-    } else if (keyCode === KeyCode.KEY_DOWN) {
+    } else if (key === 'ArrowDown') {
       this.clearScrollTimeout();
       this.scrollTimeout = setTimeout(this.clearScrollTimeout, 500);
       this.setState({ active: Util.findNext(children, active) });
       this.updateCurrentActiveScreenReader();
-    } else if (keyCode === KeyCode.KEY_RETURN && active !== null && (!Util.allowsMultipleSelections(variant) || !Util.includes(value, active))) {
+    } else if (key === 'Enter' && active !== null && (!Util.allowsMultipleSelections(variant) || !Util.includes(value, active))) {
       event.preventDefault();
 
       if (!Util.allowsMultipleSelections(variant)) {
@@ -405,7 +404,7 @@ class Menu extends React.Component {
         this.props.visuallyHiddenComponent.current.innerText = `${option.props.display} ${selectedTxt}`;
       }
       onSelect(option.props.value, option);
-    } else if (keyCode === KeyCode.KEY_RETURN && active !== null && Util.allowsMultipleSelections(variant) && Util.includes(value, active)) {
+    } else if (key === 'Enter' && active !== null && Util.allowsMultipleSelections(variant) && Util.includes(value, active)) {
       event.preventDefault();
       const option = Util.findByValue(children, active);
       // Handles communicating the case where a regular option is Unselected to screen readers.
@@ -426,10 +425,10 @@ class Menu extends React.Component {
         this.props.visuallyHiddenComponent.current.innerText = `${option.props.display} ${unselectedTxt}`;
       }
       onDeselect(option.props.value, option);
-    } else if (keyCode === KeyCode.KEY_HOME) {
+    } else if (key === 'Home') {
       event.preventDefault();
       this.setState({ active: Util.findFirst(children) });
-    } else if (keyCode === KeyCode.KEY_END) {
+    } else if (key === 'End') {
       event.preventDefault();
       this.setState({ active: Util.findLast(children) });
     } else if (variant === Variants.DEFAULT && keyCode >= 48 && keyCode <= 90) {

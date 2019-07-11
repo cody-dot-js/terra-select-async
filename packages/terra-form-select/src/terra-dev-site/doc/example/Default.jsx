@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies, import/no-unresolved, import/extensions
-import Select from '../../../Select';
 import classNames from 'classnames/bind';
+import Select from '../../../Select';
 import styles from './FormSelectDocCommon.module.scss';
 
 const cx = classNames.bind(styles);
